@@ -5,6 +5,7 @@ before_filter :authorize, except: [:index, :show]
   def index
    if params[:query]
       @movie = Movie.where("title LIKE ?", "%#{params[:query]}%")
+      @movie = Movie.where("director LIKE ?", "%#{params[:query]}%")
     else
       @movie = Movie.all
     end
