@@ -13,12 +13,12 @@
     <!--   Admin stuff    -->
 
     <% if current_user and current_admin? %>
-<div class = "admin actions">
-    <%= link_to "edit", edit_movie_path(movie) %>
-    <%= link_to "delete", movie_path(movie), method: :delete, data: {confirm: "You sure?"} %>
-    <%= link_to "New Movie", new_movie_path %>
-    </div>
+      <div class = "admin actions">
+        <%= link_to "edit", edit_movie_path(movie) %>
+        <%= link_to "delete", movie_path(movie), method: :delete, data: {confirm: "You sure?"} %>
+        <%= link_to "New Movie", new_movie_path %>
+      </div>
       <hr>
-      <% end %>
     <% end %>
+  <% end %>
 <% end %>

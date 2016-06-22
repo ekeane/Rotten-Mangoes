@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 	  def authorize
 	  	unless current_admin?
 	  		flash[:error] = "your forbidden buddy"
-	  		redirect_to movie_path
+	  		redirect_to movies_path
 	  		false
 	  	end
 		end 
