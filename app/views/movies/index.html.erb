@@ -1,4 +1,5 @@
 <h1>Rotten Mangoes</h1>
+<% for movie in @movies %>
     <%= link_to "Submit a movie!", new_movie_path %>
     <hr>
     <% @movies.each do |movie| %>
@@ -8,10 +9,16 @@
       <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
       <p><%= movie.description %></p>
       <%= movie.review_average %>/10
+  
+    <!--   Admin stuff    -->
+
+    <% if current_user and current_admin? %>
+<div class = "admin actions">
+    <%= link_to "edit", edit_movie_path(movie) %>
+    <%= link_to "delete", movie_path(movie), method: :delete, data: {confirm: "You sure?"} %>
+    <%= link_to "New Movie", new_movie_path %>
+    </div>
       <hr>
-      
+      <% end %>
     <% end %>
-
-
-
-   
+<% end %>

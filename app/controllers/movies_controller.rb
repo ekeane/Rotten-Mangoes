@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
 
+before_filter :authorize, :except => :index
+
   def index
     @movies = Movie.all
   end
