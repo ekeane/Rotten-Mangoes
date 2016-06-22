@@ -3,8 +3,13 @@ class MoviesController < ApplicationController
 before_filter :authorize, except: [:index, :show]
 
   def index
-    @movies = Movie.all
+   if params[:query]
+      @movie = Movie.where("title LIKE ?", "%#{params[:query]}%")
+    else
+      @movie = Movie.all
+    end
   end
+  
 
   def show
     @movie = Movie.find(params[:id])
@@ -51,5 +56,4 @@ before_filter :authorize, except: [:index, :show]
       :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
     )
   end
-
 end
