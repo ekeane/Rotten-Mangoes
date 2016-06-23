@@ -1,10 +1,20 @@
 <h1>Rotten Mangoes</h1>
 
 
-<!--   for search   --> 
+<!--   for searching title/director   --> 
 
 <%= form_tag movies_path, method: "GET" do %>
   <%= text_field_tag :query, nil, placeholder: "Search by title or director" %>
+  <p>
+    <input type="submit"/>
+  </p>
+<% end %>
+
+<!--   for searching movie duration   --> 
+
+
+<%= form_tag movies_path, method: "GET" do %>
+  <%= select_tag :search, options_for_select(["Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"], params[:search]) %>
   <p>
     <input type="submit"/>
   </p>

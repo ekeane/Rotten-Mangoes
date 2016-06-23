@@ -8,9 +8,27 @@ before_filter :authorize, except: [:index, :show]
    if params[:query]
       @movies = @movies.where("title LIKE ? OR director LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") 
    end
-  end
 
-  
+  case params[:search]
+    when "Under 90 minutes"
+        @movies = @movies.where("runtime_in_minutes < ?", 90)
+    when "Between 90 and 120 minutes"
+      @movies = @movies.where("runtime_in_minutes BETWEEN ? AND ? ", 90, 120)
+    when "Over 120 minutes"
+    @movies = @movies.where("runtime_in_minutes > ?", 120)
+
+  else 
+    nil
+  end
+end
+
+#    @movies = @movies.where("runtime_in_minutes < ?", 90 OR "runtime_in_minutes < ?", 120)
+
+# .find(:search, :conditions =>["runtime_in_minutes BETWEEN ? AND ? ", 90, 120])
+
+
+
+
 
   def show
     @movie = Movie.find(params[:id])
