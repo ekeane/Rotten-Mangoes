@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :searches
   get 'reviews/new'
 
   get 'reviews/create'

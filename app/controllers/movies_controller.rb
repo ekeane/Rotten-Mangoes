@@ -2,14 +2,16 @@ class MoviesController < ApplicationController
 
 before_filter :authorize, except: [:index, :show]
 
+
+
+
   def index
+    @movies = Movie.all
    if params[:query]
-      @movie = Movie.where("title LIKE ?", "%#{params[:query]}%")
-      @movie = Movie.where("director LIKE ?", "%#{params[:query]}%")
-    else
-      @movie = Movie.all
-    end
+      @movies = @movies.where("title LIKE ? OR director LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") 
+   end
   end
+
   
 
   def show

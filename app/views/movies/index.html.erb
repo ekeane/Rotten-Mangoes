@@ -1,9 +1,6 @@
 <h1>Rotten Mangoes</h1>
 
 
-
-
-
 <!--   for search   --> 
 
 <%= form_tag movies_path, method: "GET" do %>
@@ -13,6 +10,7 @@
   </p>
 <% end %>
 
+
 <!-- end of search block -->
 
 
@@ -20,7 +18,7 @@
 
     <%= link_to "Submit a movie!", new_movie_path %>
     <hr>
-    <% @movie.each do |movie| %>
+    <% @movies.each do |movie| %>
       <%= link_to image_tag(movie.poster_image_url_url), movie_path(movie) %>
       <h2><%= link_to movie.title, movie_path(movie) %></h2>
       <h3><%= movie.release_date %></h3>
