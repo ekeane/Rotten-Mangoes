@@ -1,7 +1,9 @@
 class Admin::UsersController < ApplicationController
 
 	def index
-	  @users = User.all
+	  #@users = User.find_by(deleted: false)
+	 	@users = User.where("deleted='f'")   #soft delete 
+	  #deleted: :false)  #for email
 	end
 
 	def new
@@ -21,7 +23,10 @@ class Admin::UsersController < ApplicationController
 	def destroy
 	    @user = User.find(params[:id])
 	    puts params[:id]
-	    @user.destroy
+	    #@user.destroy
+	    @user.deleted = true
+	    @user.save
+	    #@user.update(deleted: :true)
 	    redirect_to admin_users_path
 	end
 end

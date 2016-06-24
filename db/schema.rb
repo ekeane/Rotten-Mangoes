@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623183358) do
+ActiveRecord::Schema.define(version: 20160624023909) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160623183358) do
     t.string   "firstname"
     t.string   "lastname"
     t.boolean  "admin",           default: false
+    t.boolean  "deleted",         default: false
   end
 
 end

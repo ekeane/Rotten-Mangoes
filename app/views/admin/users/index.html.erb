@@ -6,14 +6,16 @@
 want to try and display just users not admins
 -->
 
-<% @users = User.all %>
+<% @users = User.where("deleted='f'") %>
  <% @users.each do |user| %>
   <li>
       <%= user.firstname %>
       <%= user.lastname %>
-      <%= link_to "Delete", admin_user_path(user), method: :delete, data: {confirm: "You sure?"} %>
+      <%= link_to "Delete", admin_user_path(user), method: :delete,  data: {confirm: "You sure?"} %>
   </li>
 <% end %>
+
+
 
 <h3> Total user count: <%= @users.count %></h3>
     
