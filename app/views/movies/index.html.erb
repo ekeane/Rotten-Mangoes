@@ -1,33 +1,59 @@
-<h1>Rotten Mangoes</h1>
+ <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light" <% link_to movies_path %>   >Rotten</span> Mangoes
+                </a>
+            </div>
 
-
-<!--   for searching title/director   --> 
-
-<%= form_tag movies_path, method: "GET" do %>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" > </a>  <%= form_tag movies_path, method: "GET" do %>
   <%= text_field_tag :query, nil, placeholder: "Search by title or director" %>
-  <p>
-    <input type="submit"/>
-  </p>
-<% end %>
+  <%=  submit_tag"Search", class: "btn btn-primary" %> 
+<% end %> 
+                    </li>
+                    <li id = "eman" >
+                   
 
-<!--   for searching movie duration   --> 
-
-
-<%= form_tag movies_path, method: "GET" do %>
+                        <a class="page-scroll"> </a> <%= form_tag movies_path, method: "GET" do %>
   <%= select_tag :search, options_for_select(["Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"], params[:search]) %>
-  <p>
-    <input type="submit"/>
-  </p>
-<% end %>
-
-
-<!-- end of search block -->
-
+  <%= submit_tag"Search", class: "nav navbar-nav navbar-right"%> 
+<% end %>                     </li>
+                    <li>
+                        <a class="page-scroll" <%= link_to "Submit a movie!", new_movie_path %> </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
 <!-- body displaying info -->
-
-    <%= link_to "Submit a movie!", new_movie_path %>
+<br>
+<br>
+<br>
+<br>
+    
     <hr>
+
+
+
+
+<!-- --> 
+
+
     <% @movies.each do |movie| %>
       <%= link_to image_tag(movie.poster_image_url_url), movie_path(movie) %>
       <h2><%= link_to movie.title, movie_path(movie) %></h2>

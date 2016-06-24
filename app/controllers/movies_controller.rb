@@ -54,7 +54,6 @@ end
     end
   end
 
-  
 
   protected
 

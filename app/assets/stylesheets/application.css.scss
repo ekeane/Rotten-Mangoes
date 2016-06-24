@@ -1,3 +1,16 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+/*  
+
+Might need later:
+@import “home”;
+@import “main”;  
+
+
+*/
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +26,6 @@
  *= require_tree .
  *= require_self
  */
+
+
+

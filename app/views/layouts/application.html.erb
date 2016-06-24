@@ -5,12 +5,20 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 <% flash.each do |key, value| %>
         <%= content_tag(:div, value) %>
   <% end %>
 <%= yield %>
-<%= render 'layouts/footer' %>
+
+
+
+<footer>
+        <div class="container text-center">
+            <p> <%= render 'layouts/footer' %>     Copyright &copy; Rotten Mangoes 2016</p>
+        </div>
+    </footer>
 </body>
 </html>
