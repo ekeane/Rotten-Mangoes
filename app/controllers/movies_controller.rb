@@ -16,18 +16,10 @@ before_filter :authorize, except: [:index, :show]
       @movies = @movies.where("runtime_in_minutes BETWEEN ? AND ? ", 90, 120)
     when "Over 120 minutes"
     @movies = @movies.where("runtime_in_minutes > ?", 120)
-
   else 
     nil
   end
 end
-
-#    @movies = @movies.where("runtime_in_minutes < ?", 90 OR "runtime_in_minutes < ?", 120)
-
-# .find(:search, :conditions =>["runtime_in_minutes BETWEEN ? AND ? ", 90, 120])
-
-
-
 
 
   def show
@@ -62,11 +54,7 @@ end
     end
   end
 
-  def destroy
-    @movie = Movie.find(params[:id])
-    @movie.destroy
-    redirect_to movies_path
-  end
+  
 
   protected
 

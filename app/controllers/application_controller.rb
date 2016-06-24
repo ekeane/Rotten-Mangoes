@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 	  end
 
 	  def current_admin?
-	  	current_user.admin?  
+	  	current_user.admin
 	  end 
 
 	  def authorize
